@@ -20,34 +20,28 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-boot-study</name>
 
-	<dependencies>
+	<dependencyManagement>
+		<dependencies>
 
-		<dependency>
-			<groupId>com.nys.study.spring</groupId>
-			<artifactId>spring-boot-study-main</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.nys.study.spring</groupId>
-			<artifactId>spring-boot-study-web</artifactId>
-		</dependency>
+			<!-- 实现对 SpringMVC 自动化配置 会自动帮忙引入 SpringMVC 等相关依赖 -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-web</artifactId>
+				<version>2.2.2.RELEASE</version>
+			</dependency>
 
-		<!-- 实现对 SpringMVC 自动化配置 会自动帮忙引入 SpringMVC 等相关依赖 -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<optional>true</optional>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-test</artifactId>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<build>
 		<plugins>
