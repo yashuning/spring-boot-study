@@ -10,7 +10,6 @@ import lombok.Setter;
  * @date 2022/12/23 2:48 下午
  */
 @Getter
-@Setter
 public enum ErrorCodeEnum {
 
     SUCCESS(0L, "成功"),
