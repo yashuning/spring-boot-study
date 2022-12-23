@@ -1,0 +1,11 @@
+server:
+  port: 8080 # 内嵌的 Tomcat 端口号。默认值为 8080。
+
+spring:
+  elasticsearch:
+    rest:
+      uris: 8.131.89.92:9200
+      username: es
+      # password: es
+      connection-timeout: 10
+      read-timeout: 30
