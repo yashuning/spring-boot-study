@@ -29,6 +29,6 @@ public class ElasticsearchTest extends BaseTest {
     public void testGetIndex() throws Exception {
         String index = "product";
         Product t = indexOperateService.get(index, "1", Product.class);
-        System.out.println(JsonTool.writeToString(t));
+        System.out.println(JsonTool.toJsonString(t));
     }
 }

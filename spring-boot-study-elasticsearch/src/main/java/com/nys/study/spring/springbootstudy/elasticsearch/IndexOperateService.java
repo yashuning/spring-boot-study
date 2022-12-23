@@ -57,7 +57,7 @@ public class IndexOperateService {
         GetResponse getResponse = restHighLevelClient.get(getRequest, RequestOptions.DEFAULT);
         if (getResponse.isExists()) {
             String sourceAsString = getResponse.getSourceAsString();
-            return JsonTool.parse(sourceAsString, resultType);
+            return JsonTool.toObject(sourceAsString, resultType);
         } else {
             log.error("没有找到该 id 的文档");
             return null;
