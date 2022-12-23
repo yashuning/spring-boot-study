@@ -9,9 +9,8 @@ import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,8 +18,8 @@ import java.io.OutputStream;
 import java.io.Writer;
 import java.util.Map;
 
+@Slf4j
 public class JsonTool {
-    private static final Logger logger = LogManager.getLogger(JsonTool.class);
     private static final ObjectMapper mapper = new ObjectMapper();
 
     static {
@@ -40,90 +39,56 @@ public class JsonTool {
     /**
      * Json串转为对象
      */
-    public static <T> T parse(String json, Class<?> parametrized, Class<?>... parameterClasses) {
+    public static <T> T parse(String json, Class<?> parametrized, Class<?>... parameterClasses) throws JsonProcessingException {
         if (StringUtils.isEmpty(json)) {
             return null;
         }
-        try {
-            JavaType jsonType = new ObjectMapper().getTypeFactory().constructParametricType(parametrized, parameterClasses);
-            return mapper.readValue(json, jsonType);
-        } catch (IOException e) {
-            logger.error("parse failed. json={} type={} msg={}", json, e.getMessage());
-            return null;
-        }
+        JavaType jsonType = new ObjectMapper().getTypeFactory().constructParametricType(parametrized, parameterClasses);
+        return mapper.readValue(json, jsonType);
     }
 
     /**
      * Json串转为对象
      */
-    public static <T> T parse(String json, JavaType type) {
+    public static <T> T parse(String json, JavaType type) throws JsonProcessingException {
         if (StringUtils.isEmpty(json)) {
             return null;
         }
-        try {
-            return mapper.readValue(json, type);
-        } catch (IOException e) {
-            logger.error("parse failed. json={} type={} msg={}", json, e.getMessage());
-            return null;
-        }
+        return mapper.readValue(json, type);
     }
 
     /**
      * Json串转为对象
      */
-    public static <T> T parse(String json, TypeReference<T> type) {
+    public static <T> T parse(String json, TypeReference<T> type) throws JsonProcessingException {
         if (StringUtils.isEmpty(json)) {
             return null;
         }
-        try {
-            return mapper.readValue(json, type);
-        } catch (IOException e) {
-            logger.error("parse failed. json={} type={} msg={}",
-                    json, type.getType(), e.getMessage());
-            return null;
-        }
+        return mapper.readValue(json, type);
     }
 
     /**
      * Json串转为对象
      */
-    public static <T> T parse(String json, Class<T> type) {
+    public static <T> T parse(String json, Class<T> type) throws JsonProcessingException {
         if (StringUtils.isEmpty(json)) {
             return null;
         }
-        try {
-            return mapper.readValue(json, type);
-        } catch (IOException e) {
-            logger.error("parse failed. json={} type={} msg={}",
-                    json, type, e);
-            return null;
-        }
+        return mapper.readValue(json, type);
     }
 
     /**
      * 输入流转为对象
      */
-    public static <T> T parse(InputStream stream, TypeReference<T> type) {
-        try {
-            return mapper.readValue(stream, type);
-        } catch (IOException e) {
-            logger.error("parse failed. type={} msg={}",
-                    type.getType(), e.getMessage());
-            return null;
-        }
+    public static <T> T parse(InputStream stream, TypeReference<T> type) throws IOException {
+        return mapper.readValue(stream, type);
     }
 
     /**
      * 输入流转为对象
      */
-    public static <T> T parse(InputStream stream, Class<T> type) {
-        try {
-            return mapper.readValue(stream, type);
-        } catch (IOException e) {
-            logger.error("parse failed. type={} msg={}",
-                    type, e.getMessage());
-            return null;
-        }
+    public static <T> T parse(InputStream stream, Class<T> type) throws IOException {
+        return mapper.readValue(stream, type);
     }
 
     /* ====================== 序列化工具 ==================== */
@@ -131,14 +96,8 @@ public class JsonTool {
     /**
      * 序列化对象转为json-string
      */
-    public static String writeToString(Object target) {
-        try {
-            return mapper.writeValueAsString(target);
-        } catch (JsonProcessingException e) {
-            logger.error("writeToString failed. target={} msg={}",
-                    target.getClass(), e.getMessage());
-            return StringUtils.EMPTY;
-        }
+    public static String writeToString(Object target) throws JsonProcessingException {
+        return mapper.writeValueAsString(target);
     }
 
     /**
