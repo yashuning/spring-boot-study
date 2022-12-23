@@ -19,11 +19,6 @@ import java.io.OutputStream;
 import java.io.Writer;
 import java.util.Map;
 
-/**
- * Json静态工具（基于jackson）
- * 考虑到大多数使用场景，所以：反序列化方法会吞掉异常；序列化方法会抛出异常
- * Created by wangchao23 on 2016-06-16.
- */
 public class JsonTool {
     private static final Logger logger = LogManager.getLogger(JsonTool.class);
     private static final ObjectMapper mapper = new ObjectMapper();
@@ -41,15 +36,9 @@ public class JsonTool {
         mapper.configure(MapperFeature.AUTO_DETECT_FIELDS, false);
     }
 
-    /* ====================== 反序列化工具 ==================== */
 
     /**
      * Json串转为对象
-     *
-     * @param json
-     * @param type
-     * @param <T>
-     * @return
      */
     public static <T> T parse(String json, Class<?> parametrized, Class<?>... parameterClasses) {
         if (StringUtils.isEmpty(json)) {
@@ -66,11 +55,6 @@ public class JsonTool {
 
     /**
      * Json串转为对象
-     *
-     * @param json
-     * @param type
-     * @param <T>
-     * @return
      */
     public static <T> T parse(String json, JavaType type) {
         if (StringUtils.isEmpty(json)) {
@@ -86,11 +70,6 @@ public class JsonTool {
 
     /**
      * Json串转为对象
-     *
-     * @param json
-     * @param type
-     * @param <T>
-     * @return
      */
     public static <T> T parse(String json, TypeReference<T> type) {
         if (StringUtils.isEmpty(json)) {
@@ -107,11 +86,6 @@ public class JsonTool {
 
     /**
      * Json串转为对象
-     *
-     * @param json
-     * @param type
-     * @param <T>
-     * @return
      */
     public static <T> T parse(String json, Class<T> type) {
         if (StringUtils.isEmpty(json)) {
@@ -128,11 +102,6 @@ public class JsonTool {
 
     /**
      * 输入流转为对象
-     *
-     * @param stream
-     * @param type
-     * @param <T>
-     * @return
      */
     public static <T> T parse(InputStream stream, TypeReference<T> type) {
         try {
@@ -146,11 +115,6 @@ public class JsonTool {
 
     /**
      * 输入流转为对象
-     *
-     * @param stream
-     * @param type
-     * @param <T>
-     * @return
      */
     public static <T> T parse(InputStream stream, Class<T> type) {
         try {
@@ -166,9 +130,6 @@ public class JsonTool {
 
     /**
      * 序列化对象转为json-string
-     *
-     * @param target
-     * @return
      */
     public static String writeToString(Object target) {
         try {
@@ -182,10 +143,6 @@ public class JsonTool {
 
     /**
      * 序列化对象并写入Writer
-     *
-     * @param writer
-     * @param target
-     * @throws IOException
      */
     public static void write(Writer writer, Object target) throws IOException {
         mapper.writeValue(writer, target);
@@ -193,10 +150,6 @@ public class JsonTool {
 
     /**
      * 序列化对象并写入Stream
-     *
-     * @param stream
-     * @param target
-     * @throws IOException
      */
     public static void write(OutputStream stream, Object target) throws IOException {
         mapper.writeValue(stream, target);
