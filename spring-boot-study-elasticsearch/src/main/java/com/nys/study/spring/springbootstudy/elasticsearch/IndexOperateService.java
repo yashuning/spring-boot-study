@@ -4,13 +4,19 @@ import com.nys.study.spring.springbootstudy.common.util.JsonTool;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.action.get.GetRequest;
 import org.elasticsearch.action.get.GetResponse;
+import org.elasticsearch.action.search.SearchRequest;
+import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.client.indices.GetIndexRequest;
+import org.elasticsearch.search.SearchHit;
+import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author ningyashu
@@ -62,6 +68,31 @@ public class IndexOperateService {
             log.error("没有找到该 id 的文档");
             return null;
         }
+    }
+
+    /**
+     * 条件查询
+     *
+     * @param index         索引
+     * @param sourceBuilder 条件查询构建起
+     * @param <T>           数据类型
+     * @return T 类型的集合
+     */
+    public <T> List<T> searchByQuery(String index, SearchSourceBuilder sourceBuilder, Class<T> resultType) throws IOException {
+        // 构建查询请求
+        SearchRequest searchRequest = new SearchRequest(index).source(sourceBuilder);
+        // 获取返回值
+        SearchResponse response = restHighLevelClient.search(searchRequest, RequestOptions.DEFAULT);
+        SearchHit[] hits = response.getHits().getHits();
+        // 创建空的查询结果集合
+        List<T> results = new ArrayList<>(hits.length);
+        for (SearchHit hit : hits) {
+            // 以字符串的形式获取数据源
+            String sourceAsString = hit.getSourceAsString();
+            results.add(JsonTool.toObject(sourceAsString, resultType));
+        }
+        return results;
+
     }
 
 }

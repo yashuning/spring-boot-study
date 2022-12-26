@@ -24,6 +24,7 @@
 
 	<properties>
 		<jackson.version>2.11.2</jackson.version>
+		<mybatis-spring-boot.version>2.1.0</mybatis-spring-boot.version>
 	</properties>
 
 	<dependencyManagement>
@@ -34,6 +35,16 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter-web</artifactId>
 				<version>2.4.0</version>
+				<exclusions>
+					<exclusion>
+						<groupId>ch.qos.logback</groupId>
+						<artifactId>logback-classic</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.apache.logging.log4j</groupId>
+						<artifactId>log4j-to-slf4j</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 
 			<dependency>
@@ -73,11 +84,18 @@
 			</dependency>
 			<!-- ================================================================= -->
 
+			<!-- ============================= apache ============================ -->
 			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-lang3</artifactId>
 				<version>3.9</version>
 			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-collections4</artifactId>
+				<version>4.4</version>
+			</dependency>
+			<!-- ================================================================= -->
 
 			<!-- ============================= jackson ============================ -->
 			<dependency>
@@ -99,6 +117,32 @@
 			</dependency>
 			<!-- ================================================================== -->
 
+			<!-- ============================== mysql ============================= -->
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>5.1.47</version>
+			</dependency>
+			<!--引入jdbc stater-->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-jdbc</artifactId>
+				<version>2.0.5.RELEASE</version>
+			</dependency>
+			<!-- ================================================================== -->
+
+			<!-- ============================= mybatis ============================ -->
+			<dependency>
+				<groupId>org.mybatis.spring.boot</groupId>
+				<artifactId>mybatis-spring-boot-starter</artifactId>
+				<version>${mybatis-spring-boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.pagehelper</groupId>
+				<artifactId>pagehelper</artifactId>
+				<version>5.0.0</version>
+			</dependency>
+			<!-- ================================================================== -->
 		</dependencies>
 
 
