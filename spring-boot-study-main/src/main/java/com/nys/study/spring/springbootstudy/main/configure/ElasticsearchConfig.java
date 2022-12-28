@@ -1,4 +1,4 @@
-package com.nys.study.spring.springbootstudy.elasticsearch.config;
+package com.nys.study.spring.springbootstudy.main.configure;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpHost;

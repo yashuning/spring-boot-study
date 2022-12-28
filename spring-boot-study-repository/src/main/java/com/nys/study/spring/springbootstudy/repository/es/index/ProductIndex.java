@@ -1,4 +1,4 @@
-package com.nys.study.spring.springbootstudy.elasticsearch;
+package com.nys.study.spring.springbootstudy.repository.es.index;
 
 import lombok.Data;
 
@@ -11,7 +11,7 @@ import java.util.List;
  * @date 2022/12/20 12:05 下午
  */
 @Data
-public class Product {
+public class ProductIndex {
 
     private String name;
 

@@ -1,4 +1,4 @@
-package com.nys.study.spring.springbootstudy.elasticsearch;
+package com.nys.study.spring.springbootstudy.repository.es;
 
 import com.nys.study.spring.springbootstudy.common.util.JsonTool;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +26,7 @@ import java.util.List;
  */
 @Slf4j
 @Service
-public class IndexOperateService {
+public class EsIndexOperateService {
     @Resource
     private RestHighLevelClient restHighLevelClient;
 

@@ -1,9 +1,9 @@
 package com.nys.study.spring.springbootstudy.main.elasticsearch;
 
 import com.nys.study.spring.springbootstudy.common.util.JsonTool;
-import com.nys.study.spring.springbootstudy.elasticsearch.IndexOperateService;
-import com.nys.study.spring.springbootstudy.elasticsearch.Product;
 import com.nys.study.spring.springbootstudy.main.BaseTest;
+import com.nys.study.spring.springbootstudy.repository.es.EsIndexOperateService;
+import com.nys.study.spring.springbootstudy.repository.es.index.ProductIndex;
 import org.apache.commons.collections4.CollectionUtils;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
@@ -20,19 +20,19 @@ import java.util.List;
  */
 public class ElasticsearchTest extends BaseTest {
     @Resource
-    private IndexOperateService indexOperateService;
+    private EsIndexOperateService esIndexOperateService;
 
     @Test
     public void testIsExistIndex() throws Exception {
         String index = "product";
-        boolean existIndex = indexOperateService.isExistIndex(index);
+        boolean existIndex = esIndexOperateService.isExistIndex(index);
         System.out.println(existIndex);
     }
 
     @Test
     public void testGetIndex() throws Exception {
         String index = "product";
-        Product t = indexOperateService.get(index, "1", Product.class);
+        ProductIndex t = esIndexOperateService.get(index, "1", ProductIndex.class);
         System.out.println(JsonTool.toJsonString(t));
     }
 
@@ -41,7 +41,7 @@ public class ElasticsearchTest extends BaseTest {
         String index = "product";
         SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
         sourceBuilder.query(QueryBuilders.termQuery("name.keyword", "xiaomi phone"));
-        List<Product> productList = indexOperateService.searchByQuery(index, sourceBuilder, Product.class);
+        List<ProductIndex> productList = esIndexOperateService.searchByQuery(index, sourceBuilder, ProductIndex.class);
         assert CollectionUtils.isNotEmpty(productList);
         System.out.println(JsonTool.toJsonString(productList));
     }
