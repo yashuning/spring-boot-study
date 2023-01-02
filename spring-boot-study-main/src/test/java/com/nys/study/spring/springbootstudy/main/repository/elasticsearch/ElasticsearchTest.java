@@ -1,4 +1,4 @@
-package com.nys.study.spring.springbootstudy.main.elasticsearch;
+package com.nys.study.spring.springbootstudy.main.repository.elasticsearch;
 
 import com.nys.study.spring.springbootstudy.common.util.JsonTool;
 import com.nys.study.spring.springbootstudy.main.BaseTest;

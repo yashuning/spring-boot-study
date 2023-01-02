@@ -76,6 +76,19 @@
         </dependency>
         <!-- ================================================================== -->
 
+        <!-- =============================== redis ============================ -->
+        <!-- spring-boot-starter-data-redis 里面包含了 spring-data-redis 和 lettuce-core 两个核心包 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <!-- 配置 lettuce 连接池，需要导入pool依赖 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
+        <!-- ================================================================== -->
+
     </dependencies>
 
     <build>

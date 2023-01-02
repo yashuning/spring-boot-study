@@ -21,11 +21,6 @@
         </dependency>
         <dependency>
             <groupId>com.nys.study.spring</groupId>
-            <artifactId>spring-boot-study-elasticsearch</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.nys.study.spring</groupId>
             <artifactId>spring-boot-study-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>

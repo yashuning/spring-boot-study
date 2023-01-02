@@ -8,7 +8,6 @@
 		<module>spring-boot-study-repository</module>
 		<module>spring-boot-study-web</module>
 		<module>spring-boot-study-service</module>
-		<module>spring-boot-study-elasticsearch</module>
 		<module>spring-boot-study-common</module>
 	</modules>
 	<parent>
@@ -23,6 +22,7 @@
 	<name>spring-boot-study</name>
 
 	<properties>
+		<spring.boot.version>2.4.0</spring.boot.version>
 		<jackson.version>2.11.2</jackson.version>
 		<mybatis-spring-boot.version>2.1.0</mybatis-spring-boot.version>
 	</properties>
@@ -59,7 +59,7 @@
 				<version>2.0.7.RELEASE</version>
 			</dependency>
 
-			<!-- ========================== log4j2核心包 ========================== -->
+			<!-- ========================== log4j2核心包 =========================== -->
 			<dependency>
 				<groupId>org.apache.logging.log4j</groupId>
 				<artifactId>log4j-api</artifactId>
@@ -82,9 +82,9 @@
 				<artifactId>slf4j-api</artifactId>
 				<version>1.7.25</version>
 			</dependency>
-			<!-- ================================================================= -->
+			<!-- ================================================================== -->
 
-			<!-- ============================= apache ============================ -->
+			<!-- ============================= apache ============================= -->
 			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-lang3</artifactId>
@@ -95,7 +95,7 @@
 				<artifactId>commons-collections4</artifactId>
 				<version>4.4</version>
 			</dependency>
-			<!-- ================================================================= -->
+			<!-- ================================================================== -->
 
 			<!-- ============================= jackson ============================ -->
 			<dependency>
@@ -141,6 +141,21 @@
 				<groupId>com.github.pagehelper</groupId>
 				<artifactId>pagehelper</artifactId>
 				<version>5.0.0</version>
+			</dependency>
+			<!-- ================================================================== -->
+
+			<!-- =============================== redis ============================ -->
+			<!-- spring-boot-starter-data-redis 里面包含了 spring-data-redis 和 lettuce-core 两个核心包 -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-data-redis</artifactId>
+				<version>${spring.boot.version}</version>
+			</dependency>
+			<!-- 配置 lettuce 连接池，需要导入pool依赖 -->
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-pool2</artifactId>
+				<version>2.6.2</version>
 			</dependency>
 			<!-- ================================================================== -->
 		</dependencies>
