@@ -1,0 +1,42 @@
+server:
+  port: 8080 # 内嵌的 Tomcat 端口号。默认值为 8080。
+
+spring:
+  ################## elasticsearch #################
+  elasticsearch:
+    rest:
+      uris: 8.131.89.92:9200
+      username: es
+      # password: es
+      connection-timeout: 10
+      read-timeout: 30
+
+  ################## mysql 配置 #################
+  datasource:
+    url: jdbc:mysql://49.233.50.193:3306/basic_info?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8&useSSL=true
+    username: root
+    password: study_mysql
+    driver-class-name: com.mysql.jdbc.Driver
+  ################## redis 配置 #################
+  redis:
+    host: 8.131.89.92
+    port: 6379
+    timeout: 5000
+    password: nys123
+    ## Redis 配置连接池，需要引入依赖 commons-pool2
+    lettuce:
+      pool:
+        min-idle: 8
+        max-idle: 16
+        max-active: 32
+
+################## mybatis #################
+mybatis:
+  # 是否执行MyBatis xml配置文件的状态检查, 只是检查状态,默认false
+  # 指定mybatis配置文件路径
+  config-location: classpath:config/mybatis-config.xml
+  # 指定mybatis生成包
+  # 指定 mapper 文件的位置
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  # 配置映射类所在包名
+  type-aliases-package: com.nys.study.spring.springbootstudy.dao.mysql.entity
