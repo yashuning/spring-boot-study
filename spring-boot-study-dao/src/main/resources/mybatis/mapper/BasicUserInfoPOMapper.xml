@@ -3,6 +3,7 @@
 <mapper namespace="com.nys.study.spring.springbootstudy.dao.mysql.mapper.BasicUserInfoPOMapper">
   <resultMap id="BaseResultMap" type="com.nys.study.spring.springbootstudy.dao.mysql.entity.BasicUserInfoPO">
     <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="server" jdbcType="VARCHAR" property="server" />
     <result column="app" jdbcType="VARCHAR" property="app" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="password" jdbcType="VARCHAR" property="password" />
@@ -67,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, app, user_name, `password`, remark
+    id, server, app, user_name, `password`, remark
   </sql>
   <select id="selectByExample" parameterType="com.nys.study.spring.springbootstudy.dao.mysql.entity.BasicUserInfoPOExample" resultMap="BaseResultMap">
     select
@@ -84,16 +85,21 @@
     </if>
   </select>
   <insert id="insert" parameterType="com.nys.study.spring.springbootstudy.dao.mysql.entity.BasicUserInfoPO">
-    insert into basic_user_info (id, app, user_name, 
-      `password`, remark)
-    values (#{id,jdbcType=BIGINT}, #{app,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
-      #{password,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+    insert into basic_user_info (id, server, app, 
+      user_name, `password`, remark
+      )
+    values (#{id,jdbcType=BIGINT}, #{server,jdbcType=VARCHAR}, #{app,jdbcType=VARCHAR}, 
+      #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.nys.study.spring.springbootstudy.dao.mysql.entity.BasicUserInfoPO">
     insert into basic_user_info
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
+      </if>
+      <if test="server != null">
+        server,
       </if>
       <if test="app != null">
         app,
@@ -111,6 +117,9 @@
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=BIGINT},
+      </if>
+      <if test="server != null">
+        #{server,jdbcType=VARCHAR},
       </if>
       <if test="app != null">
         #{app,jdbcType=VARCHAR},
@@ -132,6 +141,9 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
       </if>
+      <if test="record.server != null">
+        server = #{record.server,jdbcType=VARCHAR},
+      </if>
       <if test="record.app != null">
         app = #{record.app,jdbcType=VARCHAR},
       </if>
@@ -152,6 +164,7 @@
   <update id="updateByExample" parameterType="map">
     update basic_user_info
     set id = #{record.id,jdbcType=BIGINT},
+      server = #{record.server,jdbcType=VARCHAR},
       app = #{record.app,jdbcType=VARCHAR},
       user_name = #{record.userName,jdbcType=VARCHAR},
       `password` = #{record.password,jdbcType=VARCHAR},
@@ -163,6 +176,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.nys.study.spring.springbootstudy.dao.mysql.entity.BasicUserInfoPO">
     update basic_user_info
     <set>
+      <if test="server != null">
+        server = #{server,jdbcType=VARCHAR},
+      </if>
       <if test="app != null">
         app = #{app,jdbcType=VARCHAR},
       </if>
@@ -180,7 +196,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.nys.study.spring.springbootstudy.dao.mysql.entity.BasicUserInfoPO">
     update basic_user_info
-    set app = #{app,jdbcType=VARCHAR},
+    set server = #{server,jdbcType=VARCHAR},
+      app = #{app,jdbcType=VARCHAR},
       user_name = #{userName,jdbcType=VARCHAR},
       `password` = #{password,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR}

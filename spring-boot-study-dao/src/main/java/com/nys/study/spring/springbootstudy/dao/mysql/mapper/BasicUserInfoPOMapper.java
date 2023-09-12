@@ -2,14 +2,12 @@ package com.nys.study.spring.springbootstudy.dao.mysql.mapper;
 
 import com.nys.study.spring.springbootstudy.dao.mysql.entity.BasicUserInfoPO;
 import com.nys.study.spring.springbootstudy.dao.mysql.entity.BasicUserInfoPOExample;
-
 import java.util.List;
-
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 /**
-* Created by Mybatis Generator on 2023/09/08
+* Created by Mybatis Generator on 2023/09/12
 */
 public interface BasicUserInfoPOMapper {
     int insert(BasicUserInfoPO record);

@@ -19,6 +19,11 @@ public class BasicUserInfoDto {
 
     private Long id;
 
+    /**
+     * 服务器
+     */
+    private String server;
+
     private String app;
 
     private String userName;

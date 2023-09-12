@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
-* Created by Mybatis Generator on 2023/09/08
+* Created by Mybatis Generator on 2023/09/12
 */
 @Data
 @Builder
@@ -18,6 +18,12 @@ public class BasicUserInfoPO {
      * 说明: 
      */
     private Long id;
+
+    /**
+     * 字段: server
+     * 说明: 服务器
+     */
+    private String server;
 
     /**
      * 字段: app

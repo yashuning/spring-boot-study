@@ -73,7 +73,7 @@ public class BasicUserInfoPOExample {
     }
 
     /**
-     * basic_user_info 2023-09-08
+     * basic_user_info 2023-09-12
      */
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> criteria;
@@ -173,6 +173,76 @@ public class BasicUserInfoPOExample {
 
         public Criteria andIdNotBetween(Long value1, Long value2) {
             addCriterion("id not between", value1, value2, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andServerIsNull() {
+            addCriterion("server is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andServerIsNotNull() {
+            addCriterion("server is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andServerEqualTo(String value) {
+            addCriterion("server =", value, "server");
+            return (Criteria) this;
+        }
+
+        public Criteria andServerNotEqualTo(String value) {
+            addCriterion("server <>", value, "server");
+            return (Criteria) this;
+        }
+
+        public Criteria andServerGreaterThan(String value) {
+            addCriterion("server >", value, "server");
+            return (Criteria) this;
+        }
+
+        public Criteria andServerGreaterThanOrEqualTo(String value) {
+            addCriterion("server >=", value, "server");
+            return (Criteria) this;
+        }
+
+        public Criteria andServerLessThan(String value) {
+            addCriterion("server <", value, "server");
+            return (Criteria) this;
+        }
+
+        public Criteria andServerLessThanOrEqualTo(String value) {
+            addCriterion("server <=", value, "server");
+            return (Criteria) this;
+        }
+
+        public Criteria andServerLike(String value) {
+            addCriterion("server like", value, "server");
+            return (Criteria) this;
+        }
+
+        public Criteria andServerNotLike(String value) {
+            addCriterion("server not like", value, "server");
+            return (Criteria) this;
+        }
+
+        public Criteria andServerIn(List<String> values) {
+            addCriterion("server in", values, "server");
+            return (Criteria) this;
+        }
+
+        public Criteria andServerNotIn(List<String> values) {
+            addCriterion("server not in", values, "server");
+            return (Criteria) this;
+        }
+
+        public Criteria andServerBetween(String value1, String value2) {
+            addCriterion("server between", value1, value2, "server");
+            return (Criteria) this;
+        }
+
+        public Criteria andServerNotBetween(String value1, String value2) {
+            addCriterion("server not between", value1, value2, "server");
             return (Criteria) this;
         }
 
@@ -468,7 +538,7 @@ public class BasicUserInfoPOExample {
     }
 
     /**
-     * basic_user_info 2023-09-08
+     * basic_user_info 2023-09-12
      */
     public static class Criterion {
         private String condition;
