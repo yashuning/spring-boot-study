@@ -18,12 +18,10 @@
         <dependency>
             <groupId>com.nys.study.spring</groupId>
             <artifactId>spring-boot-study-common</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.nys.study.spring</groupId>
             <artifactId>spring-boot-study-dao</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
         <!-- 实现对 SpringMVC 自动化配置 会自动帮忙引入 SpringMVC 等相关依赖 -->
