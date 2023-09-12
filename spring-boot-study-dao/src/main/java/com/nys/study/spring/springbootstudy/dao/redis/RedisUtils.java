@@ -14,6 +14,10 @@ import javax.annotation.Resource;
 @Component
 public class RedisUtils {
 
+    /**
+     * 后续改成注入RedisUtils对象，把方法都改成static的
+     */
+
     @Resource
     private RedisTemplate<String, Object> redisTemplate;
 
