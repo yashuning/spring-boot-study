@@ -4,6 +4,7 @@ import com.nys.study.spring.springbootstudy.common.util.JsonTool;
 import com.nys.study.spring.springbootstudy.main.BaseTest;
 import com.nys.study.spring.springbootstudy.service.api.IBasicUserInfoService;
 import com.nys.study.spring.springbootstudy.service.dto.BasicUserInfoDto;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
 import javax.annotation.Resource;
@@ -15,6 +16,7 @@ import java.util.List;
  * @Description: User测试
  * @date 2022/12/26 8:44 下午
  */
+@Slf4j
 public class UserServiceTest extends BaseTest {
 
     @Resource
@@ -23,6 +25,7 @@ public class UserServiceTest extends BaseTest {
     @Test
     public void testListUserInfo(){
         List<BasicUserInfoDto> userDtoList = basicUserInfoService.listBasicUserInfo();
+        log.info("aaa111");
         System.out.println(JsonTool.toJsonString(userDtoList));
     }
 
