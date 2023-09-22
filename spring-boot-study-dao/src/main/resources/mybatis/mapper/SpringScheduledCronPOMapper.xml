@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nys.study.spring.springbootstudy.dao.mysql.mapper.SpringScheduledCronPOMapper">
+  <resultMap id="BaseResultMap" type="com.nys.study.spring.springbootstudy.dao.mysql.entity.SpringScheduledCronPO">
+    <id column="cron_id" jdbcType="BIGINT" property="cronId" />
+    <result column="cron_key" jdbcType="VARCHAR" property="cronKey" />
+    <result column="cron_expression" jdbcType="VARCHAR" property="cronExpression" />
+    <result column="task_explain" jdbcType="VARCHAR" property="taskExplain" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    cron_id, cron_key, cron_expression, task_explain, `status`
+  </sql>
+  <select id="selectByExample" parameterType="com.nys.study.spring.springbootstudy.dao.mysql.entity.SpringScheduledCronPOExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from spring_scheduled_cron
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <insert id="insert" parameterType="com.nys.study.spring.springbootstudy.dao.mysql.entity.SpringScheduledCronPO">
+    insert into spring_scheduled_cron (cron_id, cron_key, cron_expression, 
+      task_explain, `status`)
+    values (#{cronId,jdbcType=BIGINT}, #{cronKey,jdbcType=VARCHAR}, #{cronExpression,jdbcType=VARCHAR}, 
+      #{taskExplain,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.nys.study.spring.springbootstudy.dao.mysql.entity.SpringScheduledCronPO">
+    insert into spring_scheduled_cron
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cronId != null">
+        cron_id,
+      </if>
+      <if test="cronKey != null">
+        cron_key,
+      </if>
+      <if test="cronExpression != null">
+        cron_expression,
+      </if>
+      <if test="taskExplain != null">
+        task_explain,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cronId != null">
+        #{cronId,jdbcType=BIGINT},
+      </if>
+      <if test="cronKey != null">
+        #{cronKey,jdbcType=VARCHAR},
+      </if>
+      <if test="cronExpression != null">
+        #{cronExpression,jdbcType=VARCHAR},
+      </if>
+      <if test="taskExplain != null">
+        #{taskExplain,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByExampleSelective" parameterType="map">
+    update spring_scheduled_cron
+    <set>
+      <if test="record.cronId != null">
+        cron_id = #{record.cronId,jdbcType=BIGINT},
+      </if>
+      <if test="record.cronKey != null">
+        cron_key = #{record.cronKey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cronExpression != null">
+        cron_expression = #{record.cronExpression,jdbcType=VARCHAR},
+      </if>
+      <if test="record.taskExplain != null">
+        task_explain = #{record.taskExplain,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        `status` = #{record.status,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update spring_scheduled_cron
+    set cron_id = #{record.cronId,jdbcType=BIGINT},
+      cron_key = #{record.cronKey,jdbcType=VARCHAR},
+      cron_expression = #{record.cronExpression,jdbcType=VARCHAR},
+      task_explain = #{record.taskExplain,jdbcType=VARCHAR},
+      `status` = #{record.status,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nys.study.spring.springbootstudy.dao.mysql.entity.SpringScheduledCronPO">
+    update spring_scheduled_cron
+    <set>
+      <if test="cronKey != null">
+        cron_key = #{cronKey,jdbcType=VARCHAR},
+      </if>
+      <if test="cronExpression != null">
+        cron_expression = #{cronExpression,jdbcType=VARCHAR},
+      </if>
+      <if test="taskExplain != null">
+        task_explain = #{taskExplain,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where cron_id = #{cronId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nys.study.spring.springbootstudy.dao.mysql.entity.SpringScheduledCronPO">
+    update spring_scheduled_cron
+    set cron_key = #{cronKey,jdbcType=VARCHAR},
+      cron_expression = #{cronExpression,jdbcType=VARCHAR},
+      task_explain = #{taskExplain,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=INTEGER}
+    where cron_id = #{cronId,jdbcType=BIGINT}
+  </update>
+  <select id="selectByExampleWithRowbounds" parameterType="com.nys.study.spring.springbootstudy.dao.mysql.entity.SpringScheduledCronPOExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from spring_scheduled_cron
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

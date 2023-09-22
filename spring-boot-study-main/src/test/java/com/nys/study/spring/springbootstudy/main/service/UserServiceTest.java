@@ -3,7 +3,7 @@ package com.nys.study.spring.springbootstudy.main.service;
 import com.nys.study.spring.springbootstudy.common.util.JsonTool;
 import com.nys.study.spring.springbootstudy.main.BaseTest;
 import com.nys.study.spring.springbootstudy.service.api.IBasicUserInfoService;
-import com.nys.study.spring.springbootstudy.service.dto.BasicUserInfoDto;
+import com.nys.study.spring.springbootstudy.dto.BasicUserInfoDto;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 

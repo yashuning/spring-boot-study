@@ -103,7 +103,17 @@
              tableName为对应的数据库表名
              domainObjectName 是要生成的实体类名(可以不指定，默认按帕斯卡命名法将表名转换成类名)
              enableXXXByExample 默认为 true， 为 true 会生成一个对应Example帮助类，帮助你进行条件查询，不想要可以设为false -->
-        <table tableName="basic_user_info" domainObjectName="BasicUserInfoPO"
+<!--        <table tableName="basic_user_info" domainObjectName="BasicUserInfoPO"-->
+<!--               enableSelectByPrimaryKey="false"-->
+<!--               enableSelectByExample="true"-->
+<!--               enableCountByExample="false"-->
+<!--               enableDeleteByPrimaryKey="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableUpdateByPrimaryKey="true"-->
+<!--               enableUpdateByExample="true"-->
+<!--        />-->
+
+        <table tableName="spring_scheduled_cron" domainObjectName="SpringScheduledCronPO"
                enableSelectByPrimaryKey="false"
                enableSelectByExample="true"
                enableCountByExample="false"

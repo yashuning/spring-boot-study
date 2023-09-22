@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nys.study.spring.springbootstudy.dao.mysql.mapper.SpringScheduledCronPOExtMapper">
+    <resultMap id="BaseResultMap" type="com.nys.study.spring.springbootstudy.dao.mysql.entity.SpringScheduledCronPO">
+        <id column="cron_id" jdbcType="BIGINT" property="cronId"/>
+        <result column="cron_key" jdbcType="VARCHAR" property="cronKey"/>
+        <result column="cron_expression" jdbcType="VARCHAR" property="cronExpression"/>
+        <result column="task_explain" jdbcType="VARCHAR" property="taskExplain"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        cron_id, cron_key, cron_expression, task_explain, `status`
+    </sql>
+
+    <sql id="Table_Name">spring_scheduled_cron</sql>
+
+    <select id="listAll"
+            resultType="com.nys.study.spring.springbootstudy.dao.mysql.entity.SpringScheduledCronPO">
+        select <include refid="Base_Column_List"/>
+        from <include refid="Table_Name"/>
+    </select>
+
+  <select id="selectById"
+          resultType="com.nys.study.spring.springbootstudy.dao.mysql.entity.SpringScheduledCronPO">
+        select <include refid="Base_Column_List"/>
+        from <include refid="Table_Name"/>
+        where cron_id = #{cronId}
+  </select>
+
+    <select id="selectByCronKey"
+            resultType="com.nys.study.spring.springbootstudy.dao.mysql.entity.SpringScheduledCronPO">
+        select <include refid="Base_Column_List"/>
+        from <include refid="Table_Name"/>
+        where cron_key = #{cronKey}
+    </select>
+
+</mapper>

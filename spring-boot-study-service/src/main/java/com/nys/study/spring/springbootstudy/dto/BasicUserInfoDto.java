@@ -1,4 +1,4 @@
-package com.nys.study.spring.springbootstudy.service.dto;
+package com.nys.study.spring.springbootstudy.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

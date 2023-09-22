@@ -1,7 +1,7 @@
-package com.nys.study.spring.springbootstudy.convert.user;
+package com.nys.study.spring.springbootstudy.convert;
 
 import com.nys.study.spring.springbootstudy.dao.mysql.entity.BasicUserInfoPO;
-import com.nys.study.spring.springbootstudy.service.dto.BasicUserInfoDto;
+import com.nys.study.spring.springbootstudy.dto.BasicUserInfoDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

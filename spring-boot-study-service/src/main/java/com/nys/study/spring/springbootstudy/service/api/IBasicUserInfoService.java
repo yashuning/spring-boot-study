@@ -1,6 +1,6 @@
 package com.nys.study.spring.springbootstudy.service.api;
 
-import com.nys.study.spring.springbootstudy.service.dto.BasicUserInfoDto;
+import com.nys.study.spring.springbootstudy.dto.BasicUserInfoDto;
 
 import java.util.List;
 

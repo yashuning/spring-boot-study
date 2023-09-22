@@ -1,10 +1,10 @@
 package com.nys.study.spring.springbootstudy.repository.impl;
 
-import com.nys.study.spring.springbootstudy.convert.user.BasicUserInfoConvertor;
+import com.nys.study.spring.springbootstudy.convert.BasicUserInfoConvertor;
 import com.nys.study.spring.springbootstudy.dao.mysql.entity.BasicUserInfoPO;
 import com.nys.study.spring.springbootstudy.dao.mysql.mapper.BasicUserInfoPOExtMapper;
 import com.nys.study.spring.springbootstudy.repository.IBasicUserInfoRepository;
-import com.nys.study.spring.springbootstudy.service.dto.BasicUserInfoDto;
+import com.nys.study.spring.springbootstudy.dto.BasicUserInfoDto;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;

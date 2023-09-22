@@ -2,7 +2,7 @@ package com.nys.study.spring.springbootstudy.service.api.impl;
 
 import com.nys.study.spring.springbootstudy.repository.IBasicUserInfoRepository;
 import com.nys.study.spring.springbootstudy.service.api.IBasicUserInfoService;
-import com.nys.study.spring.springbootstudy.service.dto.BasicUserInfoDto;
+import com.nys.study.spring.springbootstudy.dto.BasicUserInfoDto;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

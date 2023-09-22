@@ -19,7 +19,7 @@ public class TaskSpringScheduled {
     /**
      * 每隔15秒执行一次方法
      */
-    @Scheduled(cron = "*/15 * * * * ?")
+//    @Scheduled(cron = "*/15 * * * * ?")
     public void execute() {
         log.info("thread id:{},FixedPrintTask execute times:{}", Thread.currentThread().getId(), ++i);
     }
