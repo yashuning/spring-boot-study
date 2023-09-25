@@ -1,6 +1,7 @@
 package com.nys.study.spring.springbootstudy.config;
 
 import com.nys.study.spring.springbootstudy.service.api.ISpringScheduledCronService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.SchedulingConfigurer;
 import org.springframework.scheduling.config.ScheduledTaskRegistrar;
@@ -14,6 +15,7 @@ import javax.annotation.Resource;
  * @date 2023/9/21 3:42 PM
  */
 @Configuration
+@Slf4j
 public class ScheduledConfig implements SchedulingConfigurer {
 
     /**
@@ -30,7 +32,8 @@ public class ScheduledConfig implements SchedulingConfigurer {
     @Override
     public void configureTasks(ScheduledTaskRegistrar scheduledTaskRegistrar) {
         // 初始化定时任务
-        springScheduledCronService.initScheduledTask();
+        log.info("暂时先不开启定时任务......");
+//        springScheduledCronService.initScheduledTask();
         // 其实这里也可以使用scheduledTaskRegistrar去添加任务的
         // 但是这样动态增加的时候,还是需要使用SpringScheduledCronRepository的add方法
         // 而且取消任务不方便 就放弃了在这里配置

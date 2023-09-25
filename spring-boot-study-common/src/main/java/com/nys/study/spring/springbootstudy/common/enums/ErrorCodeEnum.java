@@ -13,6 +13,8 @@ import lombok.Setter;
 public enum ErrorCodeEnum {
 
     SUCCESS(0L, "成功"),
+    SERVER_ERROR(1L, "服务异常"),
+    BUSINESS_ERROR(2L, "业务异常"),
     JSON_PARSE_ERROR(1005L, "json parse异常");
 
     private Long code;
