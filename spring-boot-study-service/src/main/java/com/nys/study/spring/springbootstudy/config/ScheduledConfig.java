@@ -22,7 +22,11 @@ public class ScheduledConfig implements SchedulingConfigurer {
 
     @Resource
     private ISpringScheduledCronService springScheduledCronService;
-    
+
+    /**
+     * ScheduledAnnotationBeanPostProcessor的finishRegistration方法会调用到这个方法
+     * ScheduledAnnotationBeanPostProcessor是通过Spring的SPI技术，由注解 @EnableScheduling 引入的
+     */
     @Override
     public void configureTasks(ScheduledTaskRegistrar scheduledTaskRegistrar) {
         // 初始化定时任务
