@@ -1,7 +1,7 @@
 package com.nys.study.spring.springbootstudy.web.vo.base;
 
 /**
- * @author ningyashu
+ * @author nys
  * @program: spring-boot-study
  * @Description: Controller层返回结果状态码
  * @date 2023/9/22 4:19 PM

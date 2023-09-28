@@ -45,8 +45,8 @@ public class EsIndexOperateService {
         try {
             return restHighLevelClient.indices().exists(getIndexRequest, RequestOptions.DEFAULT);
         } catch (IOException e) {
-            log.error("判断索引是否存在异常！");
-            throw new Exception("判断索引是否存在异常");
+            log.error("判断索引是否存在异常！", e);
+            throw new Exception("判断索引是否存在异常", e);
         }
     }
 

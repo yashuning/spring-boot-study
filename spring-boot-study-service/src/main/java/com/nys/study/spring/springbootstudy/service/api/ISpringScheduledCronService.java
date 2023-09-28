@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.concurrent.ScheduledFuture;
 
 /**
- * @author ningyashu
+ * @author nys
  * @program: spring-boot-study
  * @Description: 定时任务service
  * @date 2023/9/21 7:50 PM

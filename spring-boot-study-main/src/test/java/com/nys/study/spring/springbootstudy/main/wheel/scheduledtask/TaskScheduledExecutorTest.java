@@ -7,7 +7,7 @@ import org.junit.Test;
 import javax.annotation.Resource;
 
 /**
- * @author ningyashu
+ * @author nys
  * @program: spring-boot-study
  * @Description: 测试
  * @date 2023/9/19 7:45 PM

@@ -1,7 +1,6 @@
 package com.nys.study.spring.springbootstudy.web.advice;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nys.study.spring.springbootstudy.common.util.JsonUtil;
 import com.nys.study.spring.springbootstudy.web.annotation.ResponseIntercept;
 import com.nys.study.spring.springbootstudy.web.annotation.ResponseNotIntercept;
 import com.nys.study.spring.springbootstudy.web.vo.base.ResponseResultVO;
@@ -17,9 +16,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 import java.lang.annotation.Annotation;
-import java.util.Objects;
-
-import static org.apache.logging.log4j.message.MapMessage.MapFormat.JSON;
 
 /**
  * @author nys

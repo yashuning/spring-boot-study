@@ -48,9 +48,19 @@ public class GlobalExceptionHandler {
      * 说明：参数为必填时，若入参中无此参数则会报MissingServletRequestParameterException
      */
     @ExceptionHandler({MissingServletRequestParameterException.class})
-    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR, reason = "系统参数处理异常")
+    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR, reason = "系统参数缺失异常")
     public ResponseResultVO<?> handleMissingServletRequestParameterException(MissingServletRequestParameterException ex) {
         log.error("全局异常处理-参数缺失，errorMsg={}", ex.getMessage(), ex);
-        return ResponseResultUtil.renderFailResult(ResultEnum.PARAM_IS_BLANK, String.format("系统参数缺失！errorMag=%s", ex.getMessage()));
+        return ResponseResultUtil.renderFailResult(ResultEnum.PARAM_NOT_COMPLETE, String.format("系统参数缺失！errorMag=%s", ex.getMessage()));
+    }
+
+    /**
+     * 参数校验异常
+     */
+    @ExceptionHandler({IllegalArgumentException.class})
+    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR, reason = "系统参数校验异常")
+    public ResponseResultVO<?> handleIllegalArgumentException(IllegalArgumentException ex) {
+        log.error("全局异常处理-参数校验失败，errorMsg={}", ex.getMessage(), ex);
+        return ResponseResultUtil.renderFailResult(ResultEnum.PARAM_IS_INVALID, String.format("系统参数校验失败！errorMag=%s", ex.getMessage()));
     }
 }

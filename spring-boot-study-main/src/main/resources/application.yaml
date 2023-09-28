@@ -5,9 +5,9 @@ spring:
   ################## elasticsearch #################
   elasticsearch:
     rest:
-      uris: 8.131.89.92:9200
+      uris: 49.233.50.193:9201
       username: es
-      # password: es
+      password: es
       connection-timeout: 10
       read-timeout: 30
 

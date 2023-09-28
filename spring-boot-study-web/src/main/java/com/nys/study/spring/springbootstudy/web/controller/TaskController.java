@@ -30,4 +30,11 @@ public class TaskController {
         List<SpringScheduledCronDto> allTask = springScheduledCronService.findAllTask();
         return JsonUtil.writeToString(allTask);
     }
+
+    @ResponseIntercept
+    @PostMapping(value = "/editTaskCron", produces = {"application/json;charset=UTF-8"})
+    public String editTaskCron() {
+        List<SpringScheduledCronDto> allTask = springScheduledCronService.findAllTask();
+        return JsonUtil.writeToString(allTask);
+    }
 }
