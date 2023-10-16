@@ -5,9 +5,12 @@ import com.nys.study.spring.springbootstudy.main.BaseTest;
 import com.nys.study.spring.springbootstudy.service.api.IBasicUserInfoService;
 import com.nys.study.spring.springbootstudy.dto.BasicUserInfoDto;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import javax.annotation.Resource;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -21,6 +24,16 @@ public class UserServiceTest extends BaseTest {
 
     @Resource
     private IBasicUserInfoService basicUserInfoService;
+
+    @Before
+    public void init() {
+        BasicUserInfoDto userInfoDto = new BasicUserInfoDto();
+        userInfoDto.setUserName("猪猪love");
+        userInfoDto.setRemark("mock数据库查询");
+        Mockito.doReturn(Collections.singletonList(userInfoDto))
+                .when(basicUserInfoRepository)
+                .listBasicUserInfo();
+    }
 
     @Test
     public void testListUserInfo(){

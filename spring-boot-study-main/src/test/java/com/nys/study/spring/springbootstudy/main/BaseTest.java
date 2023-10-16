@@ -1,7 +1,9 @@
 package com.nys.study.spring.springbootstudy.main;
 
+import com.nys.study.spring.springbootstudy.repository.IBasicUserInfoRepository;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
@@ -13,4 +15,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = SpringBootStudyApplication.class)
 public class BaseTest {
+
+    @SpyBean
+    protected IBasicUserInfoRepository basicUserInfoRepository;
+
 }
