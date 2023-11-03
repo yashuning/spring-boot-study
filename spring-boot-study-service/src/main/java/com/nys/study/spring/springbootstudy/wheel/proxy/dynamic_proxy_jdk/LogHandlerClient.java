@@ -15,6 +15,15 @@ import java.lang.reflect.Proxy;
  */
 public class LogHandlerClient {
 
+    /**
+     * 使用JDK动态代理的五大步骤:
+     * 1.通过实现 InvocationHandler 接口来自定义自己的 InvocationHandler;
+     * 2.通过 Proxy.getProxyClass 获得动态代理类
+     * 3.通过反射机制获得代理类的构造方法，方法签名为 getConstructor(InvocationHandler.class)
+     * 4.通过构造函数获得代理对象并将自定义的 InvocationHandler 实例对象传为参数传入
+     * 5.通过代理对象调用目标方法
+     */
+
     public static void main(String[] args) {
         // 设置变量可以保存动态代理类，默认名称以 $Proxy0 格式命名
         // System.getProperties().setProperty("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
@@ -38,6 +47,6 @@ public class LogHandlerClient {
         proxy.update();
 
         // 保存JDK动态代理生成的代理类，类名保存为 UserServiceProxy
-        ProxyUtils.generateClassFile(userService.getClass(), "UserServiceProxy");
+        ProxyUtils.generateClassFile(userService.getClass(), "DynamicUserServiceProxy");
     }
 }

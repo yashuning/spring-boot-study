@@ -7,7 +7,9 @@
 
 ## 代理
 > 参考:  
-> https://juejin.cn/post/6844903744954433544
+> https://juejin.cn/post/6844903744954433544  
+> https://blog.csdn.net/jiankunking/article/details/52143504  
+> https://github.com/guobinhit/cg-blog/blob/master/articles/others/dynamic-proxy.md (源码讲解较多)
 
 ### 动态代理
 
@@ -20,18 +22,29 @@
 2. 将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构
 3. 在内存中生成一个代表这个类的 java.lang.Class 对象，作为方法区这个类的各种数据访问入口
 
-由于虚拟机规范对这3点要求并不具体，所以实际的实现是非常灵活的，关于第1点，获取类的二进制字节流（class字节码）就有很多途径：
-- 从ZIP包获取，这是JAR、EAR、WAR等格式的基础
-- 从网络中获取，典型的应用是 Applet
-- 运行时计算生成，这种场景使用最多的是动态代理技术，在 java.lang.reflect.Proxy 类中，就是用了 ProxyGenerator.generateProxyClass 来为特定接口生成形式为 *$Proxy 的代理类的二进制字节流
-- 由其它文件生成，典型应用是JSP，即由JSP文件生成对应的Class类
-- 从数据库中获取等等；
-
 所以，动态代理就是想办法，根据接口或目标对象，计算出代理类的字节码，然后再加载到JVM中使用。
 
 为了让生成的代理类与目标对象（真实主题角色）保持一致性，从现在开始将介绍以下两种最常见的方式：
 - 通过实现接口的方式 -> JDK动态代理
+  - 提供者：JDK
+  - 使用JDK官方的Proxy类创建代理对象
+  - 注意：代理的目标对象必须实现接口
 - 通过继承类的方式 -> CGLIB动态代理
+  - 提供者：第三方 CGLib
+  - 使用CGLib的Enhancer类创建代理对象
+  - 注意：如果报 asmxxxx 异常，需要导入 asm.jar包
 
 
 #### JDK动态代理
+
+主要涉及两个类：`java.lang.reflect.Proxy` 和 `java.lang.reflect.InvocationHandler`
+
+1. `implements InvocationHandler`
+2. `Proxy.newProxyInstance`
+
+#### CGLIB动态代理
+
+1. `implements MethodInterceptor`
+2. `Enhancer.create`
+
+底层原理：
