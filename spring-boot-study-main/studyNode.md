@@ -28,3 +28,8 @@ redis 提供的序列化方式：
 ## spring整合mybatis
 ### 配置MyBatis Generator 
 > 参考文档：https://juejin.cn/post/6844903982582743048
+
+## maven-compiler-plugin 与spring-boot-maven-plugin 区别
+1. maven-compiler-plugin是jar包生成插件，提供了manifest的配置，生成jar包中一般存放的是.class文件已经resources目录下的东西，文件很小。
+2. spring-boot-maven-plugin主要目标是spring-boot的启动、停止、运行和repackage，对于打包来说那就是repackage，也就是说它实现的打包功能是重新打包，原始jar包还是由maven-jar-plugin生成的。
+3. 使用maven-compiler-plugin生成的jar不能直接通过java -jar运行，提示：没有主清单属性。

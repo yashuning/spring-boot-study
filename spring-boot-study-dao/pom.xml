@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>spring-boot-study-dao</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
 
     <properties>
     </properties>
@@ -101,46 +102,46 @@
 
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>3.3.0</version>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.4.0</version>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.3</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.mybatis.generator</groupId>
-                <artifactId>mybatis-generator-maven-plugin</artifactId>
-                <version>1.3.7</version>
-                <configuration>
-                    <!--指定MBG配置文件位置-->
-                    <configurationFile>src/main/resources/mybatis-generator.xml</configurationFile>
-                    <!--允许生成的同名文件覆盖-->
-                    <overwrite>true</overwrite>
-                    <!--允许显示文件生成的具体过程-->
-                    <verbose>true</verbose>
-                    <!--将当前pom的依赖项添加到生成器的类路径中-->
-                    <includeCompileDependencies>true</includeCompileDependencies>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+<!--    <build>-->
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-resources-plugin</artifactId>-->
+<!--                <version>3.3.0</version>-->
+<!--            </plugin>-->
+<!--            <plugin>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--                <version>2.4.0</version>-->
+<!--                <configuration>-->
+<!--                    <skip>true</skip>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-compiler-plugin</artifactId>-->
+<!--                <version>3.8.1</version>-->
+<!--                <configuration>-->
+<!--                    <source>11</source>-->
+<!--                    <target>11</target>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+<!--            <plugin>-->
+<!--                <groupId>org.mybatis.generator</groupId>-->
+<!--                <artifactId>mybatis-generator-maven-plugin</artifactId>-->
+<!--                <version>1.3.7</version>-->
+<!--                <configuration>-->
+<!--                    &lt;!&ndash;指定MBG配置文件位置&ndash;&gt;-->
+<!--                    <configurationFile>src/main/resources/mybatis-generator.xml</configurationFile>-->
+<!--                    &lt;!&ndash;允许生成的同名文件覆盖&ndash;&gt;-->
+<!--                    <overwrite>true</overwrite>-->
+<!--                    &lt;!&ndash;允许显示文件生成的具体过程&ndash;&gt;-->
+<!--                    <verbose>true</verbose>-->
+<!--                    &lt;!&ndash;将当前pom的依赖项添加到生成器的类路径中&ndash;&gt;-->
+<!--                    <includeCompileDependencies>true</includeCompileDependencies>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+<!--        </plugins>-->
+<!--    </build>-->
 
 </project>

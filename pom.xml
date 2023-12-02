@@ -33,12 +33,27 @@
 			<dependency>
 				<groupId>com.nys.study.spring</groupId>
 				<artifactId>spring-boot-study-common</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>0.0.1</version>
+			</dependency>
+			<dependency>
+				<groupId>com.nys.study.spring</groupId>
+				<artifactId>spring-boot-study-main</artifactId>
+				<version>0.0.1</version>
 			</dependency>
 			<dependency>
 				<groupId>com.nys.study.spring</groupId>
 				<artifactId>spring-boot-study-dao</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>1.0.0-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>com.nys.study.spring</groupId>
+				<artifactId>spring-boot-study-service</artifactId>
+				<version>1.0.0-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>com.nys.study.spring</groupId>
+				<artifactId>spring-boot-study-web</artifactId>
+				<version>1.0.0-SNAPSHOT</version>
 			</dependency>
 
 			<!-- 实现对 SpringMVC 自动化配置 会自动帮忙引入 SpringMVC 等相关依赖 -->
@@ -68,7 +83,7 @@
 			<dependency>
 				<groupId>org.projectlombok</groupId>
 				<artifactId>lombok</artifactId>
-				<version>1.16.22</version>
+				<version>1.18.20</version>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
@@ -232,22 +247,5 @@
 		</dependencies>
 
 	</dependencyManagement>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<excludes>
-						<exclude>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-						</exclude>
-					</excludes>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
 
 </project>

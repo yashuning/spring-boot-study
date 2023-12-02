@@ -1,10 +1,10 @@
 package com.nys.study.spring.springbootstudy.wheel.proxy;
 
 import lombok.extern.slf4j.Slf4j;
-import sun.misc.ProxyGenerator;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.lang.reflect.Method;
 
 /**
  * @author ningyashu
@@ -21,7 +21,20 @@ public class ProxyUtils {
      */
     public static void generateClassFile(Class clazz, String proxyName) {
         // 根据类信息和提供的代理类名称，生成字节码
-        byte[] classFile = ProxyGenerator.generateProxyClass(proxyName, clazz.getInterfaces());
+
+        byte[] classFile = new byte[]{};
+        try {
+            /**
+             * JDK11中ProxyGenerator是包内可见导致无法调用，
+             * 这个类在java.lang.reflect包内，使用反射调用
+             */
+            Class proxyGeneratorClass = Class.forName("java.lang.reflect.ProxyGenerator");
+            Method m =proxyGeneratorClass.getDeclaredMethod("generateProxyClass",String.class,Class[].class);
+            m.setAccessible(true);
+            classFile = (byte[])m.invoke(proxyName, (Object) clazz.getInterfaces());
+        } catch (Exception e){
+            log.error("Failed to generate class file: " + e.getMessage());
+        }
         String paths = clazz.getResource(".").getPath();
         log.info(paths);
         FileOutputStream out = null;
