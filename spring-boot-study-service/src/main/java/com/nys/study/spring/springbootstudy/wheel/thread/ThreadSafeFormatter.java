@@ -1,4 +1,4 @@
-package com.nys.study.spring.springbootstudy.thread;
+package com.nys.study.spring.springbootstudy.wheel.thread;
 
 import java.text.SimpleDateFormat;
 

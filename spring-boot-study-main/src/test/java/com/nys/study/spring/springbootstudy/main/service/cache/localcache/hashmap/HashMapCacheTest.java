@@ -1,12 +1,12 @@
 package com.nys.study.spring.springbootstudy.main.service.cache.localcache.hashmap;
 
 import com.nys.study.spring.springbootstudy.main.BaseTest;
-import com.nys.study.spring.springbootstudy.cache.localcache.hashmapcache.HashMapCacheV1;
-import com.nys.study.spring.springbootstudy.cache.localcache.hashmapcache.HashMapCacheV2;
-import com.nys.study.spring.springbootstudy.cache.localcache.hashmapcache.HashMapCacheV3;
-import com.nys.study.spring.springbootstudy.cache.localcache.hashmapcache.HashMapCacheV5;
-import com.nys.study.spring.springbootstudy.cache.localcache.hashmapcache.HashMapCacheV6;
-import com.nys.study.spring.springbootstudy.thread.ThreadSafeFormatter;
+import com.nys.study.spring.springbootstudy.wheel.cache.localcache.hashmapcache.HashMapCacheV1;
+import com.nys.study.spring.springbootstudy.wheel.cache.localcache.hashmapcache.HashMapCacheV2;
+import com.nys.study.spring.springbootstudy.wheel.cache.localcache.hashmapcache.HashMapCacheV3;
+import com.nys.study.spring.springbootstudy.wheel.cache.localcache.hashmapcache.HashMapCacheV5;
+import com.nys.study.spring.springbootstudy.wheel.cache.localcache.hashmapcache.HashMapCacheV6;
+import com.nys.study.spring.springbootstudy.wheel.thread.ThreadSafeFormatter;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 

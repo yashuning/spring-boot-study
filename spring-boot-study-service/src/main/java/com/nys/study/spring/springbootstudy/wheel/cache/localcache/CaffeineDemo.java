@@ -1,4 +1,4 @@
-package com.nys.study.spring.springbootstudy.cache.localcache;
+package com.nys.study.spring.springbootstudy.wheel.cache.localcache;
 
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;

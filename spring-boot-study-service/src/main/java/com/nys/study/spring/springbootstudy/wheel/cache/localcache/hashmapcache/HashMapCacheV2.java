@@ -1,4 +1,4 @@
-package com.nys.study.spring.springbootstudy.cache.localcache.hashmapcache;
+package com.nys.study.spring.springbootstudy.wheel.cache.localcache.hashmapcache;
 
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;

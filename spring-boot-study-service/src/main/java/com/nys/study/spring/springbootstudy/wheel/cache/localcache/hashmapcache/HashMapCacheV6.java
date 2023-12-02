@@ -1,36 +1,78 @@
-package com.nys.study.spring.springbootstudy.cache.localcache.hashmapcache;
+package com.nys.study.spring.springbootstudy.wheel.cache.localcache.hashmapcache;
 
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Map;
 import java.util.Objects;
+import java.util.Random;
+import java.util.concurrent.Callable;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.FutureTask;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author nys
- *  第五个版本，当碰到会抛出异常的计算方法的情况这时候应该重新计算
- *  对于不同的异常，也要对应不同的处理态度：
- *  - CancellationException 和 InterruptedException 基本都是人为操作，这时候应该立即终止任务。
- *  - 根据方法逻辑，我们可以知道方法是有可能计算成功的，只不过需要多重试几次。
- *  - while(true) 的加入可以让出错之后自动重新进行计算直到成功为止，但是如果是人为取消，就需要抛出异常并且结束。
+ * 高性能缓存第六版
  */
 @Slf4j
-public class HashMapCacheV5<K, V> {
-    /**
-     * 改造，并发不安全集合改为并发安全集合
-     * value 存储为 future的值
-     */
+public class HashMapCacheV6<K, V> {
     private final Map<K, Future<V>> cache = Maps.newConcurrentMap();
+    private static final Random RANDOM = new Random();
+    ;
+
+    private static final ScheduledExecutorService SCHEDULED_EXECUTOR_SERVICE = new ScheduledThreadPoolExecutor(10);
 
     private final ComputeAble computeAble = new MayFailCompute();
+
 
     public V compute(K arg) {
         return doCompute(arg);
     }
+
+    public V compute(K arg, long expireTime) {
+        if (expireTime > 0) {
+            SCHEDULED_EXECUTOR_SERVICE.schedule(new Runnable() {
+                @Override
+                public void run() {
+                    // 定期清除缓存的方法
+                    expire(arg);
+                }
+
+                /*
+                 * 注意需要同步方法，防止多线程重复添加定时任务
+                 */
+                private synchronized void expire(K arg) {
+                    // 检查当前 key 是否存在
+                    Future<V> vFuture = cache.get(arg);
+                    // 如果 value 存在，则需要进行
+                    if (Objects.nonNull(vFuture)) {
+                        //如果任务被取消，此时需要关闭对应的定时任务
+                        if (vFuture.isDone()) {
+                            log.warn("future 任务被取消");
+                            vFuture.cancel(true);
+                        }
+                        log.warn("过期时间到了，缓存被清除");
+                        cache.remove(arg);
+                    }
+                }
+            }, expireTime, TimeUnit.MILLISECONDS);
+        }
+        return doCompute(arg);
+    }
+
+    public V compute(K arg, long expireTime, boolean isRandom) {
+        if (isRandom) {
+            return compute(arg, expireTime);
+        } else {
+            return compute(arg, expireTime + RANDOM.nextInt(1000));
+        }
+    }
+
 
     private V doCompute(K arg) {
         // 对于重复计算进行处理
@@ -40,7 +82,14 @@ public class HashMapCacheV5<K, V> {
                 // 如果获取不到内容，说明不在缓存当中
                 if (Objects.isNull(result)) {
                     // 此时利用callAble 线程任务指定任务获取，在获取到结果之前线程会阻塞
-                    FutureTask<V> future = new FutureTask<>(() -> (V) computeAble.doCompute(arg));
+                    FutureTask<V> future = new FutureTask<>(new Callable<V>() {
+                        @Override
+                        @SuppressWarnings("unchecked")
+                        public V call() throws Exception {
+                            return (V) computeAble.doCompute(arg);
+
+                        }
+                    });
                     //把新的future覆盖之前获取的future
                     result = future;
                     // 执行
