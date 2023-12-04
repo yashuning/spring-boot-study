@@ -26,7 +26,7 @@ import java.lang.annotation.Annotation;
 @RestControllerAdvice
 public class CommonResponseResult implements ResponseBodyAdvice<Object> {
     /**
-     * @RestControllerAdvice：是一个组合注解，包含@ControllerAdvice和@ResponseBody。 实现ResponseBodyAdvice接口 需要重写supports,beforeBodyWrite方法
+     * 说明：@RestControllerAdvice：是一个组合注解，包含@ControllerAdvice和@ResponseBody。 实现ResponseBodyAdvice接口 需要重写supports,beforeBodyWrite方法
      * 作用一般是用于拦截Controller方法的返回值，统一处理返回值/响应体， 加解密，签名等
      */
 
@@ -53,10 +53,11 @@ public class CommonResponseResult implements ResponseBodyAdvice<Object> {
 //            return true;
 //        }
         if (AnnotatedElementUtils.hasAnnotation(returnType.getContainingClass(), ANNOTATION_TYPE_RESPONSE_NOT_INTERCEPT)
-                || returnType.hasMethodAnnotation(ANNOTATION_TYPE_RESPONSE_NOT_INTERCEPT)){
+                || returnType.hasMethodAnnotation(ANNOTATION_TYPE_RESPONSE_NOT_INTERCEPT)) {
             return false;
         }
-        if (AnnotatedElementUtils.hasAnnotation(returnType.getContainingClass(), ANNOTATION_TYPE_RESPONSE_INTERCEPT)){
+        if (AnnotatedElementUtils.hasAnnotation(returnType.getContainingClass(), ANNOTATION_TYPE_RESPONSE_INTERCEPT)
+                || returnType.hasMethodAnnotation(ANNOTATION_TYPE_RESPONSE_INTERCEPT)) {
             return true;
         }
         // 若返回结果为true,则调用beforeBodyWrite方法
