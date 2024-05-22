@@ -16,4 +16,11 @@
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.nys.study.spring</groupId>
+            <artifactId>spring-boot-study-common</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>
