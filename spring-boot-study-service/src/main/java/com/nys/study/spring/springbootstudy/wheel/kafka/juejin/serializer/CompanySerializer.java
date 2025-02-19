@@ -2,8 +2,10 @@ package com.nys.study.spring.springbootstudy.wheel.kafka.juejin.serializer;
 
 import com.nys.study.spring.springbootstudy.wheel.kafka.juejin.Company;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.kafka.common.serialization.Serializer;
 
+import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 
 /**
@@ -23,16 +25,8 @@ public class CompanySerializer implements Serializer<Company> {
         }
         byte[] name, address;
         try {
-            if (data.getName() != null) {
-                name = data.getName().getBytes(ENCODING);
-            } else {
-                name = new byte[0];
-            }
-            if (data.getAddress() != null) {
-                address = data.getAddress().getBytes(ENCODING);
-            } else {
-                address = new byte[0];
-            }
+            name = getStringBytes(data.getName());
+            address = getStringBytes(data.getAddress());
             ByteBuffer buffer = ByteBuffer.allocate(4 + 4 + name.length + address.length);
             buffer.putInt(name.length);
             buffer.put(name);
@@ -43,5 +37,12 @@ public class CompanySerializer implements Serializer<Company> {
             log.error("serializer -- 自定义company序列化器序列化异常！", e);
         }
         return new byte[0];
+    }
+
+    private byte[] getStringBytes(String value) throws UnsupportedEncodingException {
+        if (StringUtils.isEmpty(value)) {
+            return new byte[0];
+        }
+        return value.getBytes(ENCODING);
     }
 }
