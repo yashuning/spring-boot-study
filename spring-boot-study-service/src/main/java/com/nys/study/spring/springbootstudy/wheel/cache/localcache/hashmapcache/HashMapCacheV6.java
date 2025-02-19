@@ -23,7 +23,6 @@ import java.util.concurrent.TimeUnit;
 public class HashMapCacheV6<K, V> {
     private final Map<K, Future<V>> cache = Maps.newConcurrentMap();
     private static final Random RANDOM = new Random();
-    ;
 
     private static final ScheduledExecutorService SCHEDULED_EXECUTOR_SERVICE = new ScheduledThreadPoolExecutor(10);
 
@@ -34,34 +33,39 @@ public class HashMapCacheV6<K, V> {
         return doCompute(arg);
     }
 
+    /**
+     * 方法好像只做了定时清理缓存，但是没有把对象放到缓存里
+     */
     public V compute(K arg, long expireTime) {
-        if (expireTime > 0) {
-            SCHEDULED_EXECUTOR_SERVICE.schedule(new Runnable() {
-                @Override
-                public void run() {
-                    // 定期清除缓存的方法
-                    expire(arg);
-                }
-
-                /*
-                 * 注意需要同步方法，防止多线程重复添加定时任务
-                 */
-                private synchronized void expire(K arg) {
-                    // 检查当前 key 是否存在
-                    Future<V> vFuture = cache.get(arg);
-                    // 如果 value 存在，则需要进行
-                    if (Objects.nonNull(vFuture)) {
-                        //如果任务被取消，此时需要关闭对应的定时任务
-                        if (vFuture.isDone()) {
-                            log.warn("future 任务被取消");
-                            vFuture.cancel(true);
-                        }
-                        log.warn("过期时间到了，缓存被清除");
-                        cache.remove(arg);
-                    }
-                }
-            }, expireTime, TimeUnit.MILLISECONDS);
+        if (expireTime <= 0) {
+            return doCompute(arg);
         }
+        SCHEDULED_EXECUTOR_SERVICE.schedule(new Runnable() {
+            @Override
+            public void run() {
+                // 定期清除缓存的方法
+                expire(arg);
+            }
+
+            /*
+             * 注意需要同步方法，防止多线程重复添加定时任务
+             * 是不是可以用双重检查锁来减小锁粒度？
+             */
+            private synchronized void expire(K arg) {
+                // 检查当前 key 是否存在
+                Future<V> vFuture = cache.get(arg);
+                // 如果 value 存在，则需要进行
+                if (Objects.nonNull(vFuture)) {
+                    //如果任务被取消，此时需要关闭对应的定时任务
+                    if (vFuture.isDone()) {
+                        log.warn("future 任务被取消");
+                        vFuture.cancel(true);
+                    }
+                    log.warn("过期时间到了，缓存被清除");
+                    cache.remove(arg);
+                }
+            }
+        }, expireTime, TimeUnit.MILLISECONDS);
         return doCompute(arg);
     }
 
