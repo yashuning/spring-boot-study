@@ -25,12 +25,13 @@ public class RedisConfig {
 
     @Bean
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory){
-        RedisTemplate<String, Object> redisTemplate = new RedisTemplate();
+        RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(factory);
         // string 序列化
         StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
         // json 序列化配置
-        Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
+        // GenericJackson2JsonRedisSerializer 其实和Jackson2JsonRedisSerializer<Object>是类似的，可直接替代
+        Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<>(Object.class);
         // ObjectMapper 转译
         ObjectMapper objectMapper = new ObjectMapper();
         // 指定要序列化的域，field,get和set,以及修饰符范围，ANY是都有包括private和public
