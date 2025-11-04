@@ -12,7 +12,7 @@ import java.util.Properties;
 import java.util.concurrent.Future;
 
 /**
- * @author ningyashu
+ * @author nys
  * @program: spring-boot-study
  * @Description: 生产者客户端示例代码
  * @date 2023/12/5 19:42

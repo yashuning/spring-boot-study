@@ -9,7 +9,7 @@ import java.nio.ByteBuffer;
 import java.util.Map;
 
 /**
- * @author ningyashu
+ * @author nys
  * @program: spring-boot-study
  * @Description: CompanySerializer 自定义反序列化器
  * @date 2023/12/8 17:07

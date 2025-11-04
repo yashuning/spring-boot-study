@@ -3,7 +3,7 @@ package com.nys.study.spring.springbootstudy.algorithm.daily_lucifer;
 import java.util.Arrays;
 
 /**
- * @author ningyashu
+ * @author nys
  * @program: spring-boot-study
  * @Description: 821. 字符的最短距离
  * @date 2024/5/6 16:38

@@ -3,7 +3,7 @@ package com.nys.study.spring.springbootstudy.algorithm.daily_代码随想录;
 import java.util.Arrays;
 
 /**
- * @author ningyashu
+ * @author nys
  * @program: spring-boot-study
  * @Description: 977.有序数组的平方
  * @date 2024/5/22 10:55

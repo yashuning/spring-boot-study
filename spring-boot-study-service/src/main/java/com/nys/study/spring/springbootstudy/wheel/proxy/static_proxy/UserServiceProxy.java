@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.Date;
 
 /**
- * @author ningyashu
+ * @author nys
  * @program: spring-boot-study
  * @Description: TODO
  * @date 2023/10/22 5:17 PM

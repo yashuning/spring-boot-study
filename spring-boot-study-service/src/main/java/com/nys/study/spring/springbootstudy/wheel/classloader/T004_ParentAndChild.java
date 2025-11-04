@@ -1,7 +1,7 @@
 package com.nys.study.spring.springbootstudy.wheel.classloader;
 
 /**
- * @author ningyashu
+ * @author nys
  * @program: spring-boot-study
  * @Description: 演示类加载器的父子关系
  * @date 2023/12/5 22:25

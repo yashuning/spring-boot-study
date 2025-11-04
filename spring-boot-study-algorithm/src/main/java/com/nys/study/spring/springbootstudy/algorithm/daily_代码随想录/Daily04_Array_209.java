@@ -1,7 +1,7 @@
 package com.nys.study.spring.springbootstudy.algorithm.daily_代码随想录;
 
 /**
- * @author ningyashu
+ * @author nys
  * @program: spring-boot-study
  * @Description: 209.长度最小的子数组
  * @date 2024/5/27 19:35

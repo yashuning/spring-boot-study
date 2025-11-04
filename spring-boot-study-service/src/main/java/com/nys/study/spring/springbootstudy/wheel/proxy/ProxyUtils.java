@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 /**
- * @author ningyashu
+ * @author nys
  * @program: spring-boot-study
  * @Description: 代理工具
  * @date 2023/10/31 11:30 AM

@@ -259,6 +259,29 @@
 			</dependency>
 			<!-- =================================================================== -->
 
+			<!-- ============================= excel、http ========================= -->
+			<dependency>
+				<groupId>org.apache.httpcomponents.client5</groupId>
+				<artifactId>httpclient5</artifactId>
+				<version>5.3</version>
+			</dependency>
+			<dependency>
+				<groupId>cn.afterturn</groupId>
+				<artifactId>easypoi-base</artifactId>
+				<version>4.4.0</version>
+			</dependency>
+			<dependency>
+				<groupId>cn.afterturn</groupId>
+				<artifactId>easypoi-web</artifactId>
+				<version>4.4.0</version>
+			</dependency>
+			<dependency>
+				<groupId>cn.afterturn</groupId>
+				<artifactId>easypoi-annotation</artifactId>
+				<version>4.4.0</version>
+			</dependency>
+			<!-- =================================================================== -->
+
 		</dependencies>
 
 	</dependencyManagement>

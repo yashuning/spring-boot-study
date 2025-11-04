@@ -3,7 +3,7 @@ package com.nys.study.spring.springbootstudy.algorithm.daily_代码随想录;
 import java.util.Arrays;
 
 /**
- * @author ningyashu
+ * @author nys
  * @program: spring-boot-study
  * @Description: 27. 移除元素
  * @date 2024/5/12 16:36

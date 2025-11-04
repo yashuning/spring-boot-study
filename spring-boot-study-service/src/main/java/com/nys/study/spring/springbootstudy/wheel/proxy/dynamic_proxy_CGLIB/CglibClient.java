@@ -4,7 +4,7 @@ import com.nys.study.spring.springbootstudy.wheel.proxy.UserServiceImpl;
 import org.springframework.cglib.proxy.Enhancer;
 
 /**
- * @author ningyashu
+ * @author nys
  * @program: spring-boot-study
  * @Description: TODO
  * @date 2023/11/1 7:38 PM

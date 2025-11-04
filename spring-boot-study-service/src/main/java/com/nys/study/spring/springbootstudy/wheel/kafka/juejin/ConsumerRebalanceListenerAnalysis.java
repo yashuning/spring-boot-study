@@ -19,7 +19,7 @@ import java.util.Properties;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
- * @author ningyashu
+ * @author nys
  * @program: spring-boot-study
  * @Description: 再均衡监听器使用
  * @date 2023/12/12 17:07

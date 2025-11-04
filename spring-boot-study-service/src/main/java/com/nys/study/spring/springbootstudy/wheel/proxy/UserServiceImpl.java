@@ -3,7 +3,7 @@ package com.nys.study.spring.springbootstudy.wheel.proxy;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * @author ningyashu
+ * @author nys
  * @program: spring-boot-study
  * @Description: TODO
  * @date 2023/10/22 5:15 PM

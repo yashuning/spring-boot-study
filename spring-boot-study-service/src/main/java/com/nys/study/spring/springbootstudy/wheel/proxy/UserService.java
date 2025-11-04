@@ -1,7 +1,7 @@
 package com.nys.study.spring.springbootstudy.wheel.proxy;
 
 /**
- * @author ningyashu
+ * @author nys
  * @program: spring-boot-study
  * @Description: TODO
  * @date 2023/10/22 5:14 PM

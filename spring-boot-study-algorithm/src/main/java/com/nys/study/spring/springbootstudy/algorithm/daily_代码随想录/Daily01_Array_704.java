@@ -1,7 +1,7 @@
 package com.nys.study.spring.springbootstudy.algorithm.daily_代码随想录;
 
 /**
- * @author ningyashu
+ * @author nys
  * @program: spring-boot-study
  * @Description: 704. 二分查找
  * @date 2024/5/12 16:07

@@ -3,7 +3,7 @@ package com.nys.study.spring.springbootstudy.algorithm.list;
 import java.util.Arrays;
 
 /**
- * @author ningyashu
+ * @author nys
  * @program: spring-boot-study
  * @Description: TODO
  * @date 2024/3/7 17:57

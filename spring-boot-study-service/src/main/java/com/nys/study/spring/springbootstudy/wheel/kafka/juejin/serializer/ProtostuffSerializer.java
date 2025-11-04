@@ -7,7 +7,7 @@ import io.protostuff.runtime.RuntimeSchema;
 import org.apache.kafka.common.serialization.Serializer;
 
 /**
- * @author ningyashu
+ * @author nys
  * @program: spring-boot-study
  * @Description: protostuff 序列化
  * @date 2023/12/8 17:35

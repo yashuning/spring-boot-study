@@ -9,7 +9,7 @@ import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 
 /**
- * @author ningyashu
+ * @author nys
  * @program: spring-boot-study
  * @Description: Company 自定义序列化器
  * @date 2023/12/8 17:00

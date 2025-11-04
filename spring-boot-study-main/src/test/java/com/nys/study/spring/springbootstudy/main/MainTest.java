@@ -1,7 +1,7 @@
 package com.nys.study.spring.springbootstudy.main;
 
 /**
- * @author ningyashu
+ * @author nys
  * @program: spring-boot-study
  * @Description: TODO
  * @date 2024/1/2 20:34

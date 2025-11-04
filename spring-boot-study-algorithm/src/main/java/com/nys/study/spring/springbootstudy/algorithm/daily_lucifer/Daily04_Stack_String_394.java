@@ -3,7 +3,7 @@ package com.nys.study.spring.springbootstudy.algorithm.daily_lucifer;
 import java.util.Stack;
 
 /**
- * @author ningyashu
+ * @author nys
  * @program: spring-boot-study
  * @Description: 394. 字符串解码
  * @date 2024/4/20 22:11
