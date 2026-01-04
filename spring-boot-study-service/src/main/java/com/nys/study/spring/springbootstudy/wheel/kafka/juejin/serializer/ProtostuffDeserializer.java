@@ -12,7 +12,7 @@ import org.apache.kafka.common.serialization.Deserializer;
  * @Description: protostuff 反序列化
  * @date 2023/12/8 17:36
  */
-public class ProtostuffDeserializer implements Deserializer {
+public class ProtostuffDeserializer implements Deserializer<Company> {
 
     @Override
     public Company deserialize(String topic, byte[] data) {
