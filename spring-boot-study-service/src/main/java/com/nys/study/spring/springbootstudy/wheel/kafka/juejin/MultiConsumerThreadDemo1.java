@@ -37,6 +37,10 @@ public class MultiConsumerThreadDemo1 {
         return props;
     }
 
+    /**
+     * 多个线程同时poll msg，好像有问题，相当于每个消息都被poll了好几遍然后消费了好几遍。
+     * @param args
+     */
     public static void main(String[] args) {
         Properties props = initConfig();
         int consumerThreadNum = 4;
