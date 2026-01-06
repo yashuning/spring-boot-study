@@ -36,7 +36,7 @@ public class DeserializerTest {
         ProtostuffSerializer protostuffSerializer = new ProtostuffSerializer();
         byte[] data = protostuffSerializer.serialize(topic, company);
         ProtostuffDeserializer protostuffDeserializer = new ProtostuffDeserializer();
-        Company company1 = (Company) protostuffDeserializer.deserialize(topic, data);
+        Company company1 = protostuffDeserializer.deserialize(topic, data);
         assert "wangsansan".equals(company1.getName());
     }
 
